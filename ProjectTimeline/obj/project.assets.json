@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\VC\\PROG6212\\GR1\\ProjectTimeline\\ProjectTimeline\\ProjectTimeline.csproj",
+      "projectUniqueName": "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectTimeline\\ProjectTimeline.csproj",
       "projectName": "ProjectTimeline",
-      "projectPath": "D:\\VC\\PROG6212\\GR1\\ProjectTimeline\\ProjectTimeline\\ProjectTimeline.csproj",
+      "projectPath": "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectTimeline\\ProjectTimeline.csproj",
       "packagesPath": "C:\\Users\\kaykt\\.nuget\\packages\\",
-      "outputPath": "D:\\VC\\PROG6212\\GR1\\ProjectTimeline\\ProjectTimeline\\obj\\",
+      "outputPath": "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectTimeline\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
