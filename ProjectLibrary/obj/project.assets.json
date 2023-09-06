@@ -1,30 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net7.0-windows7.0": {
-      "ProjectLibrary/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/ProjectLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ProjectLibrary.dll": {}
-        }
-      }
-    }
+    "net7.0": {}
   },
-  "libraries": {
-    "ProjectLibrary/1.0.0": {
-      "type": "project",
-      "path": "../ProjectLibrary/ProjectLibrary.csproj",
-      "msbuildProject": "../ProjectLibrary/ProjectLibrary.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net7.0-windows7.0": [
-      "ProjectLibrary >= 1.0.0"
-    ]
+    "net7.0": []
   },
   "packageFolders": {
     "C:\\Users\\kaykt\\.nuget\\packages\\": {},
@@ -34,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectTimeline\\ProjectTimeline.csproj",
-      "projectName": "ProjectTimeline",
-      "projectPath": "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectTimeline\\ProjectTimeline.csproj",
+      "projectUniqueName": "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectLibrary\\ProjectLibrary.csproj",
+      "projectName": "ProjectLibrary",
+      "projectPath": "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectLibrary\\ProjectLibrary.csproj",
       "packagesPath": "C:\\Users\\kaykt\\.nuget\\packages\\",
-      "outputPath": "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectTimeline\\obj\\",
+      "outputPath": "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -51,7 +32,7 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net7.0-windows"
+        "net7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -59,13 +40,9 @@
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0-windows7.0": {
-          "targetAlias": "net7.0-windows",
-          "projectReferences": {
-            "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectLibrary\\ProjectLibrary.csproj": {
-              "projectPath": "D:\\VC\\PROG6212\\ProjectTimeline\\ProjectLibrary\\ProjectLibrary.csproj"
-            }
-          }
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -75,8 +52,8 @@
       }
     },
     "frameworks": {
-      "net7.0-windows7.0": {
-        "targetAlias": "net7.0-windows",
+      "net7.0": {
+        "targetAlias": "net7.0",
         "imports": [
           "net461",
           "net462",
@@ -91,9 +68,6 @@
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
-          },
-          "Microsoft.WindowsDesktop.App.WPF": {
-            "privateAssets": "none"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
