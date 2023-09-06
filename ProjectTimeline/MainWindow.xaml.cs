@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectTimeline.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,15 @@ namespace ProjectTimeline
     /// </summary>
     public partial class MainWindow : Window
     {
+        pgCapture pg_capture = new pgCapture();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnCapture_Click(object sender, RoutedEventArgs e)
+        {
+            frmContainer.Content = pg_capture;
         }
     }
 }

@@ -21,10 +21,10 @@ namespace ProjectLibrary
                 }
                 prName = value; }
 		}
-        public DateOnly StartDate { get; set; }
-        private DateOnly _endDate;
+        public DateTime StartDate { get; set; }
+        private DateTime _endDate;
 
-        public DateOnly EndDate
+        public DateTime EndDate
         {
             get { return _endDate; }
             set {
@@ -39,7 +39,7 @@ namespace ProjectLibrary
         public double EstimatedCost { get; set; }
 
         public static List<Project> prList = new List<Project>();
-        public Project(string code, string projectName, DateOnly startDate, DateOnly endDate)
+        public Project(string code, string projectName, DateTime startDate, DateTime endDate)
         {
  
             Code = code;

@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectTimeline"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="550" Width="1000">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="201*"/>
+            <ColumnDefinition Width="599*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="Orange">
+            <Button x:Name="btnCapture" Content="Capture" FontSize="20" Margin="0 25" Click="btnCapture_Click"/>
+
+        </StackPanel>
+        <Frame Grid.Column="1" Name="frmContainer" NavigationUIVisibility="Hidden"/>
 
     </Grid>
 </Window>
