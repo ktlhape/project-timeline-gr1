@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace ProjectTimeline.Views
             string code, prName;
             DateTime start, end;
             int duration;
-            double estCost,rate;
+            double estCost, rate;
 
             code = txtCode.Text;
             prName = txtProjectName.Text;
@@ -38,9 +39,26 @@ namespace ProjectTimeline.Views
             end = dtpEndDate.SelectedDate.Value;
             rate = Convert.ToDouble(txtRate.Text);
 
+            Project p = new Project(code, prName, start, end);
+            estCost = p.CalcEstimatedCost(rate);
 
+            txtDuration.Text = p.Duration.ToString();
+            txtEstCost.Text = estCost.ToString("C2");
 
-         
+            Project.prList.Add(p);
+
+            //ClearScreen();
+
+        }
+        public void ClearScreen()
+        {
+            txtCode.Clear();
+            txtDuration.Clear();
+            txtEstCost.Clear();
+            txtProjectName.Clear();
+            txtRate.Clear();
+            dtpEndDate.SelectedDate = DateTime.Now.Date;
+            dtpStartDate.SelectedDate = DateTime.Now.Date;
         }
     }
 }

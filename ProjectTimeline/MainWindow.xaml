@@ -11,8 +11,9 @@
             <ColumnDefinition Width="201*"/>
             <ColumnDefinition Width="599*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Background="Orange">
-            <Button x:Name="btnCapture" Content="Capture" FontSize="20" Margin="0 25" Click="btnCapture_Click"/>
+        <StackPanel Background="Blue">
+            <Button x:Name="btnCapture" Content="Capture" FontSize="25" Height="50" Margin="0 25" Click="btnCapture_Click"/>
+            <Button x:Name="btnDisplay" Content="Display" FontSize="25" Height="50" Margin="0 25" Click="btnDisplay_Click" />
 
         </StackPanel>
         <Frame Grid.Column="1" Name="frmContainer" NavigationUIVisibility="Hidden"/>

@@ -45,3 +45,5 @@ D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\refint\P
 D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\ProjectTimeline.pdb
 D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\ProjectTimeline.genruntimeconfig.cache
 D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\ref\ProjectTimeline.dll
+D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\Views\pgDisplay.g.cs
+D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\Views\pgDisplay.baml

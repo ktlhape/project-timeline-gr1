@@ -9,46 +9,61 @@ namespace ProjectLibrary
     public class Project
     {
         public string Code { get; set; }
-		private string prName;
+        private string prName;
 
-		public string ProjectName
-		{
-			get { return prName; }
-			set {
-                if (prName.Length < 3)
+        public string ProjectName
+        {
+            get { return prName; }
+            set
+            {
+                if (value.Trim().Length < 3)
                 {
                     throw new Exception($"Project name ({prName}) should be at least 3 characters long ");
                 }
-                prName = value; }
-		}
+                prName = value;
+            }
+        }
         public DateTime StartDate { get; set; }
         private DateTime _endDate;
 
         public DateTime EndDate
         {
             get { return _endDate; }
-            set {
-                if (_endDate < StartDate )
+            set
+            {
+                if (value < StartDate)
                 {
-                    throw new Exception($"The end date ({_endDate}) cannot be before the start date ({StartDate})");
+                    throw new Exception($"The end date ({EndDate}) cannot be before the start date ({StartDate})");
                 }
-                _endDate = value; }
+                else
+                {
+                    _endDate = value;
+                }
+
+            }
         }
 
         public int Duration { get; set; }
         public double EstimatedCost { get; set; }
 
-        public static List<Project> prList = new List<Project>();
+        public static List<Project> prList = new List<Project>() { 
+        new("PR123","MICROSOFT",Convert.ToDateTime("06-05-2023"),Convert.ToDateTime("06-06-2023")),
+        new("PR124","ANGLO",Convert.ToDateTime("11-05-2023"),Convert.ToDateTime("21-06-2023")),
+        new("PR125","XBOX",Convert.ToDateTime("12-06-2023"),Convert.ToDateTime("16-11-2023")),
+        new("PR126","SONY",Convert.ToDateTime("13-06-2023"),Convert.ToDateTime("15-09-2023")),
+        new("PR127","MAC OS",Convert.ToDateTime("24-05-2023"),Convert.ToDateTime("05-06-2023")),
+        };
         public Project(string code, string projectName, DateTime startDate, DateTime endDate)
         {
- 
+
             Code = code;
             ProjectName = projectName;
             StartDate = startDate;
             EndDate = endDate;
-            Duration = (EndDate.Day - StartDate.Day);
+            //Duration = (EndDate.Day - StartDate.Day);
+            Duration = GetDuration(StartDate, EndDate);
         }
-        public Project(){}
+        public Project() { }
         /// <summary>
         /// Return the Estimated cost for the project
         /// </summary>
@@ -101,5 +116,36 @@ namespace ProjectLibrary
                 return pr;
             }
         }
+        /// <summary>
+        /// Get Projects that started between two dates
+        /// </summary>
+        /// <param name="start">Start date to be specified</param>
+        /// <param name="end">End date to be specified</param>
+        /// <returns>List of projects that started between the two dates</returns>
+        public static List<Project> BetweenDates(DateTime start, DateTime end) =>
+            (from p in prList
+             where p.StartDate.Date >= start && p.EndDate.Date <= end
+             select p).ToList();
+
+        public static List<Project> MoreThanSixWeeks() =>
+            (from p in prList
+             where (p.Duration / 5) > 6
+             select p).ToList();
+
+        public int GetDuration(DateTime start, DateTime end)
+        {
+            int totalDays = 0;
+
+            while (start != end)
+            {
+                if (start.IsBusinessDay())
+                {
+                    totalDays++;
+                }
+                start = start.AddDays(1);
+            }
+            return totalDays;
+        }
+
     }
 }
