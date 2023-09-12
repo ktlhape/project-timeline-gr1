@@ -44,24 +44,26 @@ namespace ProjectLibrary
         }
 
         public int Duration { get; set; }
+
+
         public double EstimatedCost { get; set; }
 
-        public static List<Project> prList = new List<Project>() { 
-        new("PR123","MICROSOFT",Convert.ToDateTime("06-05-2023"),Convert.ToDateTime("06-06-2023")),
-        new("PR124","ANGLO",Convert.ToDateTime("11-05-2023"),Convert.ToDateTime("21-06-2023")),
-        new("PR125","XBOX",Convert.ToDateTime("12-06-2023"),Convert.ToDateTime("16-11-2023")),
-        new("PR126","SONY",Convert.ToDateTime("13-06-2023"),Convert.ToDateTime("15-09-2023")),
-        new("PR127","MAC OS",Convert.ToDateTime("24-05-2023"),Convert.ToDateTime("05-06-2023")),
+        public static List<Project> prList = new List<Project>() {
+        new("PR123","MICROSOFT",Convert.ToDateTime("06-05-2023"),Convert.ToDateTime("06-06-2023"),150),
+        new("PR124","ANGLO",Convert.ToDateTime("11-05-2023"),Convert.ToDateTime("21-06-2023"),200),
+        new("PR125","XBOX",Convert.ToDateTime("12-06-2023"),Convert.ToDateTime("16-11-2023"),120),
+        new("PR126","SONY",Convert.ToDateTime("13-06-2023"),Convert.ToDateTime("15-09-2023"),200),
+        new("PR127","MAC OS",Convert.ToDateTime("24-05-2023"),Convert.ToDateTime("05-06-2023"),180),
         };
-        public Project(string code, string projectName, DateTime startDate, DateTime endDate)
+        public Project(string code, string projectName, DateTime startDate, DateTime endDate, double rate)
         {
-
             Code = code;
             ProjectName = projectName;
             StartDate = startDate;
             EndDate = endDate;
             //Duration = (EndDate.Day - StartDate.Day);
             Duration = GetDuration(StartDate, EndDate);
+            EstimatedCost = CalcEstimatedCost(rate);
         }
         public Project() { }
         /// <summary>
@@ -131,7 +133,20 @@ namespace ProjectLibrary
             (from p in prList
              where (p.Duration / 5) > 6
              select p).ToList();
-
+        /// <summary>
+        /// Get all the completed projects from the list
+        /// </summary>
+        /// <returns>A list of completed projects</returns>
+        public static List<Project> CompletedProjects() =>
+             (from p in prList
+              where p.EndDate < DateTime.Now.Date
+              select p).ToList();
+        /// <summary>
+        /// Get the total number of days between two dates
+        /// </summary>
+        /// <param name="start">Start date (Excluding Saturday and Sunday)</param>
+        /// <param name="end">End date (Excluding Saturday and Sunday</param>
+        /// <returns>Total number of days between two dates</returns>
         public int GetDuration(DateTime start, DateTime end)
         {
             int totalDays = 0;

@@ -47,3 +47,5 @@ D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\ProjectT
 D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\ref\ProjectTimeline.dll
 D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\Views\pgDisplay.g.cs
 D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\Views\pgDisplay.baml
+D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\Views\pgFilter.g.cs
+D:\VC\PROG6212\ProjectTimeline\ProjectTimeline\obj\Debug\net7.0-windows\Views\pgFilter.baml

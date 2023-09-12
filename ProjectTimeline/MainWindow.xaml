@@ -14,9 +14,10 @@
         <StackPanel Background="Blue">
             <Button x:Name="btnCapture" Content="Capture" FontSize="25" Height="50" Margin="0 25" Click="btnCapture_Click"/>
             <Button x:Name="btnDisplay" Content="Display" FontSize="25" Height="50" Margin="0 25" Click="btnDisplay_Click" />
+            <Button x:Name="btnFilter" Content="Filter" FontSize="25" Height="50" Margin="0 25" Click="btnFilter_Click" />
 
         </StackPanel>
-        <Frame Grid.Column="1" Name="frmContainer" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Column="1" Name="frmContainer" NavigationUIVisibility="Hidden" Padding="30"/>
 
     </Grid>
 </Window>

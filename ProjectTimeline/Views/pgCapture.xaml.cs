@@ -39,11 +39,10 @@ namespace ProjectTimeline.Views
             end = dtpEndDate.SelectedDate.Value;
             rate = Convert.ToDouble(txtRate.Text);
 
-            Project p = new Project(code, prName, start, end);
-            estCost = p.CalcEstimatedCost(rate);
+            Project p = new Project(code, prName, start, end,rate);
 
             txtDuration.Text = p.Duration.ToString();
-            txtEstCost.Text = estCost.ToString("C2");
+            txtEstCost.Text = p.EstimatedCost.ToString("C2");
 
             Project.prList.Add(p);
 
