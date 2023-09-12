@@ -33,5 +33,7 @@ namespace ProjectTimeline.Views
                 dgvDisplay.Items.Add(p);
             }
         }
+
+     
     }
 }

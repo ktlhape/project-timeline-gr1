@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ProjectTimeline.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="pgFilter">
+      Title="Filter">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Label Content="Filter By:" FontSize="20" HorizontalAlignment="Left" Margin="34,39,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="cmbOptions" HorizontalAlignment="Left" Margin="137,50,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnSearch" Content="Search" FontSize="15" Margin="606,47,110,0" VerticalAlignment="Top" Height="29"/>
+        <Button x:Name="btnSearch" Content="Search" FontSize="15" Margin="606,47,0,25" HorizontalAlignment="Left" Width="84"/>
 
         <DataGrid x:Name="dgvDisplay" Grid.Row="1" AutoGenerateColumns="False">
             <DataGrid.Columns>

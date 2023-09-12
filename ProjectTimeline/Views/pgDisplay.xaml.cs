@@ -24,35 +24,19 @@ namespace ProjectTimeline.Views
         public pgDisplay()
         {
             InitializeComponent();
+            LoadData();
         }
-
-        private void rdoAll_Click(object sender, RoutedEventArgs e)
+        public void LoadData()
         {
-            lstDisplay.Items.Clear();
             foreach (Project p in Project.prList)
             {
-                lstDisplay.Items.Add(p.ToString());
+                dgvDisplay.Items.Add(p);
             }
         }
 
-        private void rdoWeeks_Click(object sender, RoutedEventArgs e)
-        {
-            lstDisplay.Items.Clear();
-            foreach (Project p in Project.MoreThanSixWeeks())
-            {
-                lstDisplay.Items.Add(p.ToString());
-            }
-        }
 
-        private void rdoBetweenDates_Click(object sender, RoutedEventArgs e)
-        {
-            lstDisplay.Items.Clear();
-            DateTime start = Convert.ToDateTime("05-06-2023");
-            DateTime end = Convert.ToDateTime("10-09-2023");
-            foreach (Project p in Project.BetweenDates(start,end))
-            {
-                lstDisplay.Items.Add(p.ToString());
-            }
-        }
+
+
+
     }
 }

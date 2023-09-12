@@ -8,15 +8,27 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="pgDisplay">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="37*"/>
-            <RowDefinition Height="113*"/>
-        </Grid.RowDefinitions>
-        <ListBox Grid.Row="1" x:Name="lstDisplay" FontSize="30"/>
-        <RadioButton x:Name="rdoAll" Content="All Projects" GroupName="filter" HorizontalAlignment="Left" Margin="106,50,0,0" VerticalAlignment="Top" Click="rdoAll_Click"/>
-        <RadioButton x:Name="rdoWeeks" Content="Six Weeks" GroupName="filter" HorizontalAlignment="Left" Margin="604,53,0,0" VerticalAlignment="Top" Click="rdoWeeks_Click"/>
-        <RadioButton x:Name="rdoBetweenDates" Content="Between Dates" GroupName="filter" HorizontalAlignment="Center" Margin="0,53,0,0" VerticalAlignment="Top" Click="rdoBetweenDates_Click"/>
+    <Grid >
+       
+        <DataGrid x:Name="dgvDisplay" Margin="25">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Code" Width="*" Binding="{Binding Code}"/>
+                <DataGridTextColumn Header="Project Name" Width="*" Binding="{Binding ProjectName}"/>
+                <DataGridTextColumn Header="Start Date" Width="*" Binding="{Binding StartDate}"/>
+                <DataGridTextColumn Header="End Date" Width="*" Binding="{Binding EndDate}"/>
+                <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding Duration}"/>
+                <DataGridTextColumn Header="Estimated Cost" Width="*" Binding="{Binding EstimatedCost,StringFormat=C}"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate >
+                            <Button x:Name="btnEdit" Content="Edit"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            
+            
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Page>
