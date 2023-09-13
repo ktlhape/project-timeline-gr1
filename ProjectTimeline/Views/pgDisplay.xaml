@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ProjectTimeline.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="pgDisplay">
+      Title="Display Projects">
 
     <Grid >
        
@@ -14,8 +14,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Code" Width="*" Binding="{Binding Code}"/>
                 <DataGridTextColumn Header="Project Name" Width="*" Binding="{Binding ProjectName}"/>
-                <DataGridTextColumn Header="Start Date" Width="*" Binding="{Binding StartDate}"/>
-                <DataGridTextColumn Header="End Date" Width="*" Binding="{Binding EndDate}"/>
+                <DataGridTextColumn Header="Start Date" Width="*" Binding="{Binding StartDate,StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="End Date" Width="*" Binding="{Binding EndDate,StringFormat={}{0:dd/MM/yyyy}}"/>
                 <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding Duration}"/>
                 <DataGridTextColumn Header="Estimated Cost" Width="*" Binding="{Binding EstimatedCost,StringFormat=C}"/>
                 <DataGridTemplateColumn Width="*">

@@ -22,8 +22,8 @@ namespace ProjectTimeline
     public partial class MainWindow : Window
     {
         pgCapture pg_capture = new pgCapture();
-        pgDisplay pg_display = new pgDisplay();
-        pgFilter pg_filter = new();
+        
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -36,11 +36,13 @@ namespace ProjectTimeline
 
         private void btnDisplay_Click(object sender, RoutedEventArgs e)
         {
+            pgDisplay pg_display = new pgDisplay();
             frmContainer.Content = pg_display;
         }
 
         private void btnFilter_Click(object sender, RoutedEventArgs e)
         {
+            pgFilter pg_filter = new();
             frmContainer.Content = pg_filter;
         }
     }

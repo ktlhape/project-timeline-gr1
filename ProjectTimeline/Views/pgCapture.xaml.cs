@@ -32,19 +32,28 @@ namespace ProjectTimeline.Views
             DateTime start, end;
             int duration;
             double estCost, rate;
+            try
+            {
 
-            code = txtCode.Text;
-            prName = txtProjectName.Text;
-            start = dtpStartDate.SelectedDate.Value;
-            end = dtpEndDate.SelectedDate.Value;
-            rate = Convert.ToDouble(txtRate.Text);
+                code = txtCode.Text;
+                prName = txtProjectName.Text;
+                start = dtpStartDate.SelectedDate.Value;
+                end = dtpEndDate.SelectedDate.Value;
+                rate = Convert.ToDouble(txtRate.Text);
 
-            Project p = new Project(code, prName, start, end,rate);
+                Project p = new Project(code, prName, start, end, rate);
 
-            txtDuration.Text = p.Duration.ToString();
-            txtEstCost.Text = p.EstimatedCost.ToString("C2");
+                txtDuration.Text = p.Duration.ToString();
+                txtEstCost.Text = p.EstimatedCost.ToString("C2");
 
-            Project.prList.Add(p);
+                Project.prList.Add(p);
+                ClearScreen();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message,this.Title,MessageBoxButton.OK,MessageBoxImage.Error);
+            }
 
             //ClearScreen();
 
@@ -52,8 +61,8 @@ namespace ProjectTimeline.Views
         public void ClearScreen()
         {
             txtCode.Clear();
-            txtDuration.Clear();
-            txtEstCost.Clear();
+            //txtDuration.Clear();
+            //txtEstCost.Clear();
             txtProjectName.Clear();
             txtRate.Clear();
             dtpEndDate.SelectedDate = DateTime.Now.Date;
