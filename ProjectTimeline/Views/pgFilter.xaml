@@ -14,8 +14,14 @@
             <RowDefinition Height="349*"/>
         </Grid.RowDefinitions>
         <Label Content="Filter By:" FontSize="20" HorizontalAlignment="Left" Margin="34,39,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="cmbOptions" HorizontalAlignment="Left" Margin="137,50,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnSearch" Content="Search" FontSize="15" Margin="606,47,0,25" HorizontalAlignment="Left" Width="84"/>
+        <ComboBox Name="cmbOptions" HorizontalAlignment="Left" Margin="137,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbOptions_SelectionChanged">
+            <ComboBoxItem Content="All Projects"/>
+            <ComboBoxItem Content="Get Project"/>
+            <ComboBoxItem Content="Completed"/>
+            <ComboBoxItem Content="Between Dates"/>
+            <ComboBoxItem Content="Six Weeks"/>
+        </ComboBox>
+        <Button x:Name="btnSearch" Content="Search" Style="{StaticResource b_success}" Margin="606,29,0,32" HorizontalAlignment="Left" Width="84" Click="btnSearch_Click"/>
 
         <DataGrid x:Name="dgvDisplay" Grid.Row="1" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -28,6 +34,7 @@
             </DataGrid.Columns>
 
         </DataGrid>
+        <TextBox Name="txtCode" Visibility="Hidden" HorizontalAlignment="Left" Margin="325,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22"/>
 
     </Grid>
 </Page>

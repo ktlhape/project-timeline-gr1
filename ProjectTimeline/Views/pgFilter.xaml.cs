@@ -24,16 +24,49 @@ namespace ProjectTimeline.Views
         public pgFilter()
         {
             InitializeComponent();
-            LoadData();
         }
-        public void LoadData()
+        Project p = new Project();
+        string code; //Add a textbox for the code
+        private void cmbOptions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            foreach (Project p in Project.prList)
+            dgvDisplay.Items.Clear();
+            List<Project> ls = Project.prList;
+            
+            txtCode.Visibility = Visibility.Hidden;
+
+            if (cmbOptions.SelectedIndex == 0)
             {
-                dgvDisplay.Items.Add(p);
+                ls = Project.prList;
+
+            }else if(cmbOptions.SelectedIndex == 1)
+            {
+                txtCode.Visibility = Visibility.Visible;
+                
+            }else if(cmbOptions.SelectedIndex == 2)
+            {
+               
+                ls = Project.CompletedProjects();
+
+            }else if(cmbOptions.SelectedIndex == 3)
+            {
+                //get the two dates from datepicker
+            }else if(cmbOptions.SelectedIndex == 4)
+            {
+                ls = Project.MoreThanSixWeeks();
+            }
+
+            foreach (Project pr in ls)
+            {
+                dgvDisplay.Items.Add(pr);
             }
         }
 
-     
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            dgvDisplay.Items.Clear();
+            code = txtCode.Text;
+            p = p[code];
+            dgvDisplay.Items.Add(p);
+        }
     }
 }

@@ -95,7 +95,7 @@ namespace ProjectLibrary
             {
                 foreach (Project p in prList)
                 {
-                    if (p.Code.Equals(x))
+                    if (string.Equals(p.Code,x,StringComparison.OrdinalIgnoreCase))
                     {
                         return p;
                     }

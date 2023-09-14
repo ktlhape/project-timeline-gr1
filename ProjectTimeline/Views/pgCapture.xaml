@@ -21,7 +21,7 @@
         <TextBox x:Name="txtDuration" IsEnabled="False" Margin="46,322,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Left" Width="202"/>
         <Label Content="Estimated Cost" HorizontalAlignment="Left" Margin="400,280,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="txtEstCost" IsEnabled="False" Margin="400,322,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Left" Width="202"/>
-        <Button Name="btnSave" Content="SAVE" HorizontalAlignment="Left" Margin="46,377,0,0" VerticalAlignment="Top" FontSize="18" Height="41" Width="110" Click="btnSave_Click"/>
+        <Button Name="btnSave" Content="SAVE" HorizontalAlignment="Left" Margin="46,377,0,0" Style="{StaticResource b_success}" Click="btnSave_Click"/>
         <Label Content="Hourly Rate" HorizontalAlignment="Left" Margin="46,0,0,0" VerticalAlignment="Center" FontSize="18"/>
         <TextBox x:Name="txtRate" Margin="46,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Left" Width="202"/>
 
