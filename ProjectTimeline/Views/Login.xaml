@@ -1,0 +1,18 @@
+﻿<Window x:Class="ProjectTimeline.Views.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectTimeline.Views"
+        mc:Ignorable="d"
+        Title="Login" Height="300" Width="500">
+    <Grid>
+        <Label Content="Employee No:" HorizontalAlignment="Left" Margin="137,48,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtEmpNo" HorizontalAlignment="Left" Margin="250,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="159,97,0,0" VerticalAlignment="Top"/>
+        <PasswordBox Name="txtPass" HorizontalAlignment="Left" Margin="250,101,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnLogin" Content="LOGIN" HorizontalAlignment="Left" Margin="151,171,0,0" VerticalAlignment="Top" Width="79" Click="btnLogin_Click"/>
+        <Button x:Name="btnCancel" Content="CANCEL" HorizontalAlignment="Left" Margin="291,171,0,0" VerticalAlignment="Top" Width="79"/>
+
+    </Grid>
+</Window>
