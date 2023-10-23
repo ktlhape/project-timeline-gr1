@@ -21,6 +21,9 @@ namespace ProjectTimeline.Views
     /// </summary>
     public partial class pgCapture : Page
     {
+        static int weeks = 12;
+        static DateTime semesterStart = Convert.ToDateTime("05-07-2023");
+        static DateTime semesterEnd = semesterStart.AddDays(7 * weeks);
         public pgCapture()
         {
             InitializeComponent();
@@ -45,8 +48,8 @@ namespace ProjectTimeline.Views
 
                 txtDuration.Text = p.Duration.ToString();
                 txtEstCost.Text = p.EstimatedCost.ToString("C2");
-
-                Project.prList.Add(p);
+                p.AddProject();
+               // Project.prList.Add(p);
                 ClearScreen();
             }
             catch (Exception ex)
@@ -67,6 +70,29 @@ namespace ProjectTimeline.Views
             txtRate.Clear();
             dtpEndDate.SelectedDate = DateTime.Now.Date;
             dtpStartDate.SelectedDate = DateTime.Now.Date;
+        }
+
+        private void txtCode_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if(txtCode.Text.Trim().Length < 4)
+            {
+                MessageBox.Show("Project Code should be at least 4 characters long");
+              
+                
+            }
+           
+        }
+
+        private void txtCode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtCode.Text.Trim().Length == 0)
+            {
+                btnSave.IsEnabled = false;
+            }
+            else
+            {
+                btnSave.IsEnabled = true;
+            }
         }
     }
 }

@@ -10,3 +10,5 @@ D:\VC\PROG6212\ProjectTimeline\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.dl
 D:\VC\PROG6212\ProjectTimeline\ProjectLibrary\obj\Debug\net7.0\refint\ProjectLibrary.dll
 D:\VC\PROG6212\ProjectTimeline\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.pdb
 D:\VC\PROG6212\ProjectTimeline\ProjectLibrary\obj\Debug\net7.0\ref\ProjectLibrary.dll
+D:\VC\PROG6212\ProjectTimeline\ProjectLibrary\bin\Debug\net7.0\ProjectLibrary.runtimeconfig.json
+D:\VC\PROG6212\ProjectTimeline\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.genruntimeconfig.cache

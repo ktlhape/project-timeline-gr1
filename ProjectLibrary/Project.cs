@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlTypes;
+using System.Data.SqlClient;
 
 namespace ProjectLibrary
 {
     public class Project
     {
+        SqlConnection con = Connections.GetConnection();
         public string Code { get; set; }
         private string prName;
 
@@ -42,10 +45,7 @@ namespace ProjectLibrary
 
             }
         }
-
         public int Duration { get; set; }
-
-
         public double EstimatedCost { get; set; }
 
         public static List<Project> prList = new List<Project>() {
@@ -65,6 +65,17 @@ namespace ProjectLibrary
             Duration = GetDuration(StartDate, EndDate);
             EstimatedCost = CalcEstimatedCost(rate);
         }
+
+        public Project(string code, string projectName, DateTime startDate, DateTime endDate, int duration, double estimatedCost)
+        {
+            Code = code;
+            ProjectName = projectName;
+            StartDate = startDate;
+            EndDate = endDate;
+            Duration = duration;
+            EstimatedCost = estimatedCost;
+        }
+
         public Project() { }
         /// <summary>
         /// Return the Estimated cost for the project
@@ -74,6 +85,20 @@ namespace ProjectLibrary
         public double CalcEstimatedCost(double hourlyRate)
         {
             return (hourlyRate * 8) * Duration;
+        }
+
+        public void AddProject()
+        {
+            using (con)
+            {
+                string strInsert = $"INSERT INTO Project VALUES('{Code}','{ProjectName}','" +
+                    $"{StartDate.ToString("yyyy-MM-dd")}','{EndDate.ToString("yyyy-MM-dd")}'," +
+                    $"{Duration},{EstimatedCost})";
+                con.Open();
+                SqlCommand cmdInsert = new SqlCommand(strInsert, con);
+                cmdInsert.ExecuteNonQuery();
+
+            }
         }
         //(PR123)  SISONKE - 14 days, EC: R22 400.00
         /// <summary>
@@ -93,7 +118,7 @@ namespace ProjectLibrary
         {
             get
             {
-                foreach (Project p in prList)
+                foreach (Project p in AllProjects())
                 {
                     if (string.Equals(p.Code,x,StringComparison.OrdinalIgnoreCase))
                     {
@@ -102,6 +127,29 @@ namespace ProjectLibrary
                 }
                 return new Project();
             }
+        }
+
+        public List<Project> AllProjects()
+        {
+            List<Project> ls = new();
+            using (con)
+            {
+                string strSelect = $"SELECT * FROM Project";
+                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                con.Open();
+                using (SqlDataReader reader = cmdSelect.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Project p = new Project((string)reader[0], (string)reader[1],
+                            Convert.ToDateTime(reader[2]), Convert.ToDateTime(reader[3]),
+                            (int)reader[4], (double)reader[5]);
+                        ls.Add(p);
+                    }
+                }
+
+            }
+            return ls;
         }
         /// <summary>
         /// Returns all the projects that are above the specified estimated cost

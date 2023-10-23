@@ -30,13 +30,14 @@ namespace ProjectTimeline.Views
         private void cmbOptions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             dgvDisplay.Items.Clear();
-            List<Project> ls = Project.prList;
+            //List<Project> ls = Project.prList;
+            List<Project> ls = p.AllProjects();
             
             txtCode.Visibility = Visibility.Hidden;
 
             if (cmbOptions.SelectedIndex == 0)
             {
-                ls = Project.prList;
+                ls = p.AllProjects();
 
             }else if(cmbOptions.SelectedIndex == 1)
             {

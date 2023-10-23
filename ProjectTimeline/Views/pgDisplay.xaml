@@ -10,7 +10,7 @@
 
     <Grid >
        
-        <DataGrid x:Name="dgvDisplay" Margin="25">
+        <DataGrid x:Name="dgvDisplay" Margin="25"  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Code" Width="*" Binding="{Binding Code}"/>
                 <DataGridTextColumn Header="Project Name" Width="*" Binding="{Binding ProjectName}"/>
@@ -21,7 +21,7 @@
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate >
-                            <Button x:Name="btnEdit" Content="Edit"/>
+                            <Button x:Name="btnDelete" Content="Delete"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

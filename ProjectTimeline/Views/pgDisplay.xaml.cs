@@ -1,6 +1,7 @@
 ﻿using ProjectLibrary;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace ProjectTimeline.Views
 {
@@ -28,15 +30,11 @@ namespace ProjectTimeline.Views
         }
         public void LoadData()
         {
-            foreach (Project p in Project.prList)
+            Project pr = new();
+            foreach (Project p in pr.AllProjects())
             {
                 dgvDisplay.Items.Add(p);
             }
         }
-
-
-
-
-
     }
 }
