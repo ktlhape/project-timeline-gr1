@@ -4,15 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectTimeline.Views"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Login" Height="300" Width="500">
     <Grid>
-        <Label Content="Employee No:" HorizontalAlignment="Left" Margin="137,48,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtEmpNo" HorizontalAlignment="Left" Margin="250,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="159,97,0,0" VerticalAlignment="Top"/>
-        <PasswordBox Name="txtPass" HorizontalAlignment="Left" Margin="250,101,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnLogin" Content="LOGIN" HorizontalAlignment="Left" Margin="151,171,0,0" VerticalAlignment="Top" Width="79" Click="btnLogin_Click"/>
-        <Button x:Name="btnCancel" Content="CANCEL" HorizontalAlignment="Left" Margin="291,171,0,0" VerticalAlignment="Top" Width="79"/>
+
+        <Label Content="Employee No:" HorizontalAlignment="Left" Margin="137,71,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtEmpNo" HorizontalAlignment="Left" Margin="250,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="159,120,0,0" VerticalAlignment="Top"/>
+        <PasswordBox Name="txtPass" HorizontalAlignment="Left" Margin="250,124,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnLogin" Style="{StaticResource b_success}" Content="LOGIN" HorizontalAlignment="Left" Margin="151,171,0,0" VerticalAlignment="Top" Width="79" Click="btnLogin_Click"/>
+        <Button x:Name="btnCancel" Style="{StaticResource b_cancel}" Content="CANCEL" HorizontalAlignment="Left" Margin="291,171,0,0" VerticalAlignment="Top" Width="79"/>
+        <Label Content="LOGIN" HorizontalAlignment="Center" Margin="0,21,0,0" VerticalAlignment="Top" Width="84" HorizontalContentAlignment="Center" FontSize="24"/>
 
     </Grid>
 </Window>

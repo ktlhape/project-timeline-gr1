@@ -9,7 +9,7 @@ namespace ProjectLibrary
 {
     public class Employee
     {
-        static SqlConnection con = Connections.GetConnection();
+        
         public string EmployeeNo { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
@@ -30,7 +30,7 @@ namespace ProjectLibrary
         public static Employee GetEmployee(string empNo)
         {
             Employee em = null;
-            using (con)
+            using (SqlConnection con = Connections.GetConnection())
             {
                 string strSelect = $"SELECT * FROM Employee WHERE EmployeeNo = '{empNo}'";
                 con.Open();

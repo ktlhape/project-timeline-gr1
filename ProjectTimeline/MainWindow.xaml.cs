@@ -1,4 +1,5 @@
-﻿using ProjectTimeline.Views;
+﻿using ProjectLibrary;
+using ProjectTimeline.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,5 +46,25 @@ namespace ProjectTimeline
             pgFilter pg_filter = new();
             frmContainer.Content = pg_filter;
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Employee emp = (Employee)this.Tag; //em
+            this.Title = $"Welcome ({emp.EmployeeNo}): {emp.Firstname} {emp.Lastname}";
+
+            if (emp.EmpType.Equals("admin"))
+            {
+                btnCapture.Visibility = Visibility.Visible;
+                btnDisplay.Visibility = Visibility.Visible;
+                btnFilter.Visibility = Visibility.Visible;
+            }else if (emp.EmpType.Equals("user"))
+            {
+                btnCapture.Visibility = Visibility.Hidden;
+                btnDisplay.Visibility = Visibility.Visible;
+                btnFilter.Visibility = Visibility.Hidden;
+            }
+        }
+
+    
     }
 }
