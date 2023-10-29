@@ -31,13 +31,13 @@ namespace ProjectTimeline.Views
         {
             dgvDisplay.Items.Clear();
             //List<Project> ls = Project.prList;
-            List<Project> ls = p.AllProjects();
+            List<Project> ls = Project.AllProjects();
             
             txtCode.Visibility = Visibility.Hidden;
 
             if (cmbOptions.SelectedIndex == 0)
             {
-                ls = p.AllProjects();
+                ls = Project.AllProjects();
 
             }else if(cmbOptions.SelectedIndex == 1)
             {

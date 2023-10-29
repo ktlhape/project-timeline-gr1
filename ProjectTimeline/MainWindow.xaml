@@ -12,7 +12,8 @@
             <ColumnDefinition Width="599*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Background="Blue">
-            <Button x:Name="btnCapture" Content="Capture" FontSize="25" Height="50" Margin="0 25" Click="btnCapture_Click"/>
+            <Button x:Name="btnCapture" Content="Capture Project" FontSize="25" Height="50" Margin="0 25" Click="btnCapture_Click"/>
+            <Button x:Name="btnAssign" Content="Assign Project" FontSize="25" Height="50" Margin="0 25" Click="btnAssign_Click"/>
             <Button x:Name="btnDisplay" Content="Display" FontSize="25" Height="50" Margin="0 25" Click="btnDisplay_Click" />
             <Button x:Name="btnFilter" Content="Filter" FontSize="25" Height="50" Margin="0 25" Click="btnFilter_Click" />
 

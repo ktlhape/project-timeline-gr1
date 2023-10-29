@@ -31,7 +31,7 @@ namespace ProjectTimeline.Views
         public void LoadData()
         {
             Project pr = new();
-            foreach (Project p in pr.AllProjects())
+            foreach (Project p in Project.AllProjects())
             {
                 dgvDisplay.Items.Add(p);
             }

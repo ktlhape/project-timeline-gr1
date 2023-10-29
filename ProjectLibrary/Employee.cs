@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure.Pluralization;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -46,6 +47,26 @@ namespace ProjectLibrary
                 }
             }
             return em;
+        }
+        public static List<Employee> AllEmployees()
+        {
+            List<Employee> emList = new();
+            using (SqlConnection con = Connections.GetConnection())
+            {
+                string strSelect = $"SELECT * FROM Employee";
+                con.Open();
+                SqlCommand cmdSelect = new(strSelect, con);
+                using (SqlDataReader rd = cmdSelect.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        emList.Add(new(rd.GetString(0), rd.GetString(1),
+                            rd.GetString(2), rd.GetDouble(3), rd.GetString(4),
+                            rd.GetString(5)));
+                    }
+                }
+            }
+            return emList;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ProjectLibrary
 {
     public class Project
     {
-        SqlConnection con = Connections.GetConnection();
+        
         public string Code { get; set; }
         private string prName;
 
@@ -89,7 +89,7 @@ namespace ProjectLibrary
 
         public void AddProject()
         {
-            using (con)
+            using (SqlConnection con = Connections.GetConnection())
             {
                 string strInsert = $"INSERT INTO Project VALUES('{Code}','{ProjectName}','" +
                     $"{StartDate.ToString("yyyy-MM-dd")}','{EndDate.ToString("yyyy-MM-dd")}'," +
@@ -129,10 +129,10 @@ namespace ProjectLibrary
             }
         }
 
-        public List<Project> AllProjects()
+        public static List<Project> AllProjects()
         {
             List<Project> ls = new();
-            using (con)
+            using (SqlConnection con = Connections.GetConnection())
             {
                 string strSelect = $"SELECT * FROM Project";
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
