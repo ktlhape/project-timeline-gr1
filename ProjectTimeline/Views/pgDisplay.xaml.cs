@@ -30,8 +30,8 @@ namespace ProjectTimeline.Views
         }
         public void LoadData()
         {
-            Project pr = new();
-            foreach (Project p in Project.AllProjects())
+            
+            foreach (Project p in Project.EmployeeProjects(Login.loggedIn.EmployeeNo).Result)
             {
                 dgvDisplay.Items.Add(p);
             }

@@ -37,7 +37,6 @@ namespace ProjectTimeline.Views
             double estCost, rate;
             try
             {
-
                 code = txtCode.Text;
                 prName = txtProjectName.Text;
                 start = dtpStartDate.SelectedDate.Value;
@@ -48,7 +47,7 @@ namespace ProjectTimeline.Views
 
                 txtDuration.Text = p.Duration.ToString();
                 txtEstCost.Text = p.EstimatedCost.ToString("C2");
-                p.AddProject();
+               
                // Project.prList.Add(p);
                 ClearScreen();
             }

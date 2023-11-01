@@ -50,19 +50,21 @@ namespace ProjectTimeline
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //Employee emp = (Employee)this.Tag; //em
-            //this.Title = $"Welcome ({emp.EmployeeNo}): {emp.Firstname} {emp.Lastname}";
+            Employee emp = Login.loggedIn;
+            this.Title = $"Welcome ({emp.EmployeeNo}): {emp.Firstname} {emp.Lastname}";
 
-            //if (emp.EmpType.Equals("admin"))
-            //{
-            //    btnCapture.Visibility = Visibility.Visible;
-            //    btnDisplay.Visibility = Visibility.Visible;
-            //    btnFilter.Visibility = Visibility.Visible;
-            //}else if (emp.EmpType.Equals("user"))
-            //{
-            //    btnCapture.Visibility = Visibility.Hidden;
-            //    btnDisplay.Visibility = Visibility.Visible;
-            //    btnFilter.Visibility = Visibility.Hidden;
-            //}
+            if (emp.EmpType.Equals("admin"))
+            {
+                btnCapture.Visibility = Visibility.Visible;
+                btnDisplay.Visibility = Visibility.Visible;
+                btnFilter.Visibility = Visibility.Visible;
+            }
+            else if (emp.EmpType.Equals("user"))
+            {
+                btnCapture.Visibility = Visibility.Hidden;
+                btnDisplay.Visibility = Visibility.Visible;
+                btnFilter.Visibility = Visibility.Hidden;
+            }
         }
 
         private void btnAssign_Click(object sender, RoutedEventArgs e)

@@ -68,5 +68,32 @@ namespace ProjectLibrary
             }
             return emList;
         }
+        /// <summary>
+        /// Get employees who are not assigned to a specific project
+        /// </summary>
+        /// <param name="prCode">Project code to be specified</param>
+        /// <returns>A list of employees not assigned to a project</returns>
+        public static List<Employee> NotAssignedEmployees(string prCode)
+        {
+            List<Employee> emList = new();
+            using (SqlConnection con = Connections.GetConnection())
+            {
+                string strSelect = $"SELECT * from Employee e " +
+                    $"join Assignment a on e.EmployeeNo = a.EmployeeNo " +
+                    $"where e.EmployeeNo not in (select EmployeeNo from Assignment where ProjectCode = '{prCode}')";
+                con.Open();
+                SqlCommand cmdSelect = new(strSelect, con);
+                using (SqlDataReader rd = cmdSelect.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        emList.Add(new(rd.GetString(0), rd.GetString(1),
+                            rd.GetString(2), rd.GetDouble(3), rd.GetString(4),
+                            rd.GetString(5)));
+                    }
+                }
+            }
+            return emList;
+        }
     }
 }

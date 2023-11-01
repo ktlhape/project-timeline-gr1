@@ -48,13 +48,6 @@ namespace ProjectLibrary
         public int Duration { get; set; }
         public double EstimatedCost { get; set; }
 
-        public static List<Project> prList = new List<Project>() {
-        new("PR123","MICROSOFT",Convert.ToDateTime("06-05-2023"),Convert.ToDateTime("06-06-2023"),150),
-        new("PR124","ANGLO",Convert.ToDateTime("11-05-2023"),Convert.ToDateTime("21-06-2023"),200),
-        new("PR125","XBOX",Convert.ToDateTime("12-06-2023"),Convert.ToDateTime("16-11-2023"),120),
-        new("PR126","SONY",Convert.ToDateTime("13-06-2023"),Convert.ToDateTime("15-09-2023"),200),
-        new("PR127","MAC OS",Convert.ToDateTime("24-05-2023"),Convert.ToDateTime("05-06-2023"),180),
-        };
         public Project(string code, string projectName, DateTime startDate, DateTime endDate, double rate)
         {
             Code = code;
@@ -87,16 +80,16 @@ namespace ProjectLibrary
             return (hourlyRate * 8) * Duration;
         }
 
-        public void AddProject()
+        public async void AddProject()
         {
             using (SqlConnection con = Connections.GetConnection())
             {
                 string strInsert = $"INSERT INTO Project VALUES('{Code}','{ProjectName}','" +
                     $"{StartDate.ToString("yyyy-MM-dd")}','{EndDate.ToString("yyyy-MM-dd")}'," +
                     $"{Duration},{EstimatedCost})";
-                con.Open();
+                 await  con.OpenAsync();
                 SqlCommand cmdInsert = new SqlCommand(strInsert, con);
-                cmdInsert.ExecuteNonQuery();
+               await cmdInsert.ExecuteNonQueryAsync();
 
             }
         }
@@ -118,7 +111,7 @@ namespace ProjectLibrary
         {
             get
             {
-                foreach (Project p in AllProjects())
+                foreach (Project p in AllProjects().Result)
                 {
                     if (string.Equals(p.Code,x,StringComparison.OrdinalIgnoreCase))
                     {
@@ -129,17 +122,40 @@ namespace ProjectLibrary
             }
         }
 
-        public static List<Project> AllProjects()
+        public static async Task<List<Project>> AllProjects()
         {
             List<Project> ls = new();
             using (SqlConnection con = Connections.GetConnection())
             {
                 string strSelect = $"SELECT * FROM Project";
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
-                con.Open();
+                await con.OpenAsync();
                 using (SqlDataReader reader = cmdSelect.ExecuteReader())
                 {
-                    while (reader.Read())
+                    while (await reader.ReadAsync())
+                    {
+                        Project p = new Project((string)reader[0], (string)reader[1],
+                            Convert.ToDateTime(reader[2]), Convert.ToDateTime(reader[3]),
+                            (int)reader[4], (double)reader[5]);
+                        ls.Add(p);
+                    }
+                }
+
+            }
+            return ls;
+        }
+
+        public static async Task<List<Project>> EmployeeProjects(string empNo)
+        {
+            List<Project> ls = new();
+            using (SqlConnection con = Connections.GetConnection())
+            {
+                string strSelect = $"SELECT * FROM Project where ProjectCode in (select ProjectCode from Assignment where EmployeeNo = '{empNo}')";
+                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+               await con.OpenAsync();
+                using (SqlDataReader reader = cmdSelect.ExecuteReader())
+                {
+                    while (await reader.ReadAsync())
                     {
                         Project p = new Project((string)reader[0], (string)reader[1],
                             Convert.ToDateTime(reader[2]), Convert.ToDateTime(reader[3]),
@@ -156,39 +172,39 @@ namespace ProjectLibrary
         /// </summary>
         /// <param name="x">Estimated cost to be specified</param>
         /// <returns>List of Projects</returns>
-        public List<Project> this[double x]
-        {
-            get
-            {
-                List<Project> pr = (from p in prList
-                                    where p.EstimatedCost > x
-                                    select p).ToList();
-                return pr;
-            }
-        }
+        //public List<Project> this[double x]
+        //{
+        //    get
+        //    {
+        //        List<Project> pr = (from p in prList
+        //                            where p.EstimatedCost > x
+        //                            select p).ToList();
+        //        return pr;
+        //    }
+        //}
         /// <summary>
         /// Get Projects that started between two dates
         /// </summary>
         /// <param name="start">Start date to be specified</param>
         /// <param name="end">End date to be specified</param>
         /// <returns>List of projects that started between the two dates</returns>
-        public static List<Project> BetweenDates(DateTime start, DateTime end) =>
-            (from p in prList
-             where p.StartDate.Date >= start && p.EndDate.Date <= end
-             select p).ToList();
+        //public static List<Project> BetweenDates(DateTime start, DateTime end) =>
+        //    (from p in prList
+        //     where p.StartDate.Date >= start && p.EndDate.Date <= end
+        //     select p).ToList();
 
-        public static List<Project> MoreThanSixWeeks() =>
-            (from p in prList
-             where (p.Duration / 5) > 6
-             select p).ToList();
+        //public static List<Project> MoreThanSixWeeks() =>
+        //    (from p in prList
+        //     where (p.Duration / 5) > 6
+        //     select p).ToList();
         /// <summary>
         /// Get all the completed projects from the list
         /// </summary>
         /// <returns>A list of completed projects</returns>
-        public static List<Project> CompletedProjects() =>
-             (from p in prList
-              where p.EndDate < DateTime.Now.Date
-              select p).ToList();
+        //public static List<Project> CompletedProjects() =>
+        //     (from p in prList
+        //      where p.EndDate < DateTime.Now.Date
+        //      select p).ToList();
         /// <summary>
         /// Get the total number of days between two dates
         /// </summary>

@@ -18,15 +18,6 @@
                 <DataGridTextColumn Header="End Date" Width="*" Binding="{Binding EndDate,StringFormat={}{0:dd/MM/yyyy}}"/>
                 <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding Duration}"/>
                 <DataGridTextColumn Header="Estimated Cost" Width="*" Binding="{Binding EstimatedCost,StringFormat=C}"/>
-                <DataGridTemplateColumn Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate >
-                            <Button x:Name="btnDelete" Content="Delete"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            
-            
             </DataGrid.Columns>
         </DataGrid>
 

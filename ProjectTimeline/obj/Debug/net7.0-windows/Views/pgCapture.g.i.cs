@@ -117,7 +117,7 @@ namespace ProjectTimeline.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ProjectTimeline;V1.0.0.0;component/views/pgcapture.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ProjectTimeline;component/views/pgcapture.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\pgCapture.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

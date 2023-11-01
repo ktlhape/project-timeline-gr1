@@ -21,12 +21,12 @@ namespace ProjectTimeline.Views
     /// </summary>
     public partial class pgAssignProject : Page
     {
-        List<Employee> emList = Employee.AllEmployees();
-        List<Project> prList = Project.AllProjects();
+        
+        List<Project> prList = Project.AllProjects().Result;
         public pgAssignProject()
         {
             InitializeComponent();
-            dgvEmployees.ItemsSource = emList;
+           
             LoadProjects();
         }
         public void LoadProjects()
@@ -36,8 +36,10 @@ namespace ProjectTimeline.Views
 
         private void cmbProject_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
-          
+            string prCode = cmbProject.SelectedValue.ToString();
+            List<Employee> emList = Employee.NotAssignedEmployees(prCode);
+            dgvEmployees.ItemsSource = emList;
+
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

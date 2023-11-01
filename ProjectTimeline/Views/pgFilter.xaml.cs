@@ -31,13 +31,13 @@ namespace ProjectTimeline.Views
         {
             dgvDisplay.Items.Clear();
             //List<Project> ls = Project.prList;
-            List<Project> ls = Project.AllProjects();
+            List<Project> ls = Project.AllProjects().Result;
             
             txtCode.Visibility = Visibility.Hidden;
 
             if (cmbOptions.SelectedIndex == 0)
             {
-                ls = Project.AllProjects();
+                ls = Project.AllProjects().Result;
 
             }else if(cmbOptions.SelectedIndex == 1)
             {
@@ -46,14 +46,14 @@ namespace ProjectTimeline.Views
             }else if(cmbOptions.SelectedIndex == 2)
             {
                
-                ls = Project.CompletedProjects();
+               // ls = Project.CompletedProjects();
 
             }else if(cmbOptions.SelectedIndex == 3)
             {
                 //get the two dates from datepicker
             }else if(cmbOptions.SelectedIndex == 4)
             {
-                ls = Project.MoreThanSixWeeks();
+                //ls = Project.MoreThanSixWeeks();
             }
 
             foreach (Project pr in ls)

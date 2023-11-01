@@ -20,6 +20,8 @@ namespace ProjectTimeline.Views
     /// </summary>
     public partial class Login : Window
     {
+        public static Employee loggedIn;
+
         public Login()
         {
             InitializeComponent();
@@ -33,16 +35,19 @@ namespace ProjectTimeline.Views
 
             Employee em = Employee.GetEmployee(empNo);
 
-            if (em.EmployeeNo.Equals(empNo) && em.Password.Equals(pass))
+            if (em is not null && em.EmployeeNo.Equals(empNo))
             {
-                MainWindow main = new MainWindow();
-                main.Tag = em;
-                main.ShowDialog();
+                if (em.Password.Equals(pass))
+                {
+                    MainWindow main = new MainWindow();
+                    //main.Tag = em;
+                    loggedIn = em;
+                    main.ShowDialog();
+                }
+                else { MessageBox.Show($"Incorrect login details"); }
+               
             }
-            else
-            {
-                MessageBox.Show($"Employee ({empNo}) does not exist");
-            }
+            else{MessageBox.Show($"Employee ({empNo}) does not exist");}
 
         }
     }
